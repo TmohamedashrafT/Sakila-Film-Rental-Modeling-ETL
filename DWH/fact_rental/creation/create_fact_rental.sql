@@ -25,46 +25,45 @@ CREATE TABLE fact_rental
 	is_returned char(3),
 	last_update DATETIME,
 
-	CONSTRAINT fk_fact_rental_dim_customer 
-	FOREIGN KEY (customer_key) 
+	CONSTRAINT fk_fact_rental_dim_customer
+	FOREIGN KEY (customer_key)
 	REFERENCES dim_customer(customer_key),
 
 	CONSTRAINT fk_fact_rental_dim_staff
-	FOREIGN KEY (staff_key) 
+	FOREIGN KEY (staff_key)
 	REFERENCES dim_staff(staff_key),
 
 	CONSTRAINT fk_fact_rental_dim_store
-	FOREIGN KEY (store_key) 
+	FOREIGN KEY (store_key)
 	REFERENCES dim_store(store_key),
 
 	CONSTRAINT fk_fact_rental_dim_film
-	FOREIGN KEY (film_key) 
+	FOREIGN KEY (film_key)
 	REFERENCES dim_film(film_key),
 
 	CONSTRAINT fk_fact_rental_dim_date_rental
-	FOREIGN KEY (rental_date) 
+	FOREIGN KEY (rental_date)
 	REFERENCES dim_date(date_key),
 
 	CONSTRAINT fk_fact_rental_dim_date_return
-	FOREIGN KEY (return_date) 
+	FOREIGN KEY (return_date)
 	REFERENCES dim_date(date_key),
 
 	CONSTRAINT fk_fact_rental_dim_date_payment
-	FOREIGN KEY (payment_date) 
+	FOREIGN KEY (payment_date)
 	REFERENCES dim_date(date_key),
 
 	CONSTRAINT fk_fact_rental_dim_time_rental
-	FOREIGN KEY (rental_time) 
+	FOREIGN KEY (rental_time)
 	REFERENCES dim_time(time_key),
 
 	CONSTRAINT fk_fact_rental_dim_time_return
-	FOREIGN KEY (return_time) 
+	FOREIGN KEY (return_time)
 	REFERENCES dim_time(time_key),
 
 	CONSTRAINT fk_fact_rental_dim_time_payment
-	FOREIGN KEY (payment_time) 
+	FOREIGN KEY (payment_time)
 	REFERENCES dim_time(time_key),
-
-
 )
-
+CREATE CLUSTERED COLUMNSTORE INDEX CLUSTERED_COLUMNSTORE_fact_rental
+ON fact_rental

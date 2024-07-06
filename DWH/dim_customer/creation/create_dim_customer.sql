@@ -35,8 +35,10 @@ CREATE TABLE dim_customer
 	customer_is_current CHAR(2) DEFAULT '1',
 	customer_valid_from DATETIME DEFAULT (Getdate()),
 	customer_valid_through DATETIME
-	CONSTRAINT pk_dim_customer PRIMARY KEY (customer_key)
+	CONSTRAINT pk_dim_customer PRIMARY KEY NONCLUSTERED (customer_key)
 )
+CREATE CLUSTERED COLUMNSTORE INDEX CLUSTERED_COLUMNSTORE_dim_customer
+ON dim_customer
 insert into dim_customer 
 values (-1,'unknown', 'unknown', 'unknown','x', -1, 'unknown', -1, 'unknown', -1,'unknown', '1900-1-1',
        '1900-1-1', '1900-1-1', '-1', '1900-1-1', '1900-1-1')

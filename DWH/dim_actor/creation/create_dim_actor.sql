@@ -22,8 +22,9 @@ CREATE TABLE dim_actor
 	actor_id INT,-- business key
 	actor_full_name VARCHAR(100),
 	actor_last_update DATETIME
-	CONSTRAINT pk_dim_actor PRIMARY KEY (actor_key)
+	CONSTRAINT pk_dim_actor PRIMARY KEY NONCLUSTERED (actor_key)
 )
+CREATE CLUSTERED COLUMNSTORE INDEX CLUSTERED_COLUMNSTORE_dim_actor
+ON dim_actor
 insert into dim_actor
 values (-1, 'unknown', '1900-1-1')
-

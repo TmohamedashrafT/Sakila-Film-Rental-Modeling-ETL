@@ -29,8 +29,9 @@ CREATE TABLE dim_store
 	store_manager_staff_id INT,
 	store_manager_first_name VARCHAR(45),
 	store_manager_last_name VARCHAR(45)
-	CONSTRAINT pk_dim_store PRIMARY KEY (store_key)
+	CONSTRAINT pk_dim_store PRIMARY KEY NONCLUSTERED (store_key)
 )
+CREATE CLUSTERED COLUMNSTORE INDEX CLUSTERED_COLUMNSTORE_dim_store
+ON dim_store
 insert into dim_store
 values (-1, -1, 'unknown', -1, 'unknown', -1,'unknown', '1900-1-1', -1, 'unknown', 'unknown')
-

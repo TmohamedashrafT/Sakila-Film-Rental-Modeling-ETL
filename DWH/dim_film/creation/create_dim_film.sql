@@ -27,7 +27,7 @@ CREATE TABLE dim_film
 	film_key INT NOT NULL IDENTITY(-1,1),-- surrogate key
 	film_id INT,-- business key
 	film_title VARCHAR(255),
-	film_description TEXT DEFAULT NULL,
+	film_description VARCHAR(MAX) DEFAULT NULL,
 	film_release_year VARCHAR(4),
 	film_rental_duration INT DEFAULT 3,
 	film_rental_rate_per_day DECIMAL(4,2) DEFAULT 4.99,
@@ -54,8 +54,10 @@ CREATE TABLE dim_film
 	film_category_scifi char(3),
 	film_category_sports char(3),
 	film_category_travel char(3),
-	CONSTRAINT pk_dim_film PRIMARY KEY (film_key)
+	CONSTRAINT pk_dim_film PRIMARY KEY NONCLUSTERED (film_key)
 )
+CREATE CLUSTERED COLUMNSTORE INDEX CLUSTERED_COLUMNSTORE_dim_film
+ON dim_film
 insert into dim_film
 values (-1, 'unknown', 'unknown', 'xxx', -1, -1, -1, -1, 'unknown', 'unknown', -1, 'unknown',
 		'1900-1-1','xxx','xxx','xxx','xxx','xxx','xxx','xxx','xxx','xxx','xxx','xxx','xxx','xxx',

@@ -30,8 +30,10 @@ CREATE TABLE dim_staff
 	staff_country_id SMALLINT,
 	staff_country VARCHAR(50),
 	staff_last_update DATETIME,
-	CONSTRAINT pk_dim_staff PRIMARY KEY (staff_key)
+	CONSTRAINT pk_dim_staff PRIMARY KEY NONCLUSTERED (staff_key)
 )
+CREATE CLUSTERED COLUMNSTORE INDEX CLUSTERED_COLUMNSTORE_dim_staff
+ON dim_staff
 insert into dim_staff 
 values (0, 'unknown', 'unknown', 'unknown', '-1', -1, 'unknown', -1, 'unknown', -1, 'unknown', '1900-1-1')  
 

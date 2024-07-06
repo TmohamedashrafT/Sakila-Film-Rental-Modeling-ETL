@@ -42,7 +42,8 @@ CREATE TABLE dim_date
 	month_of_year INT,
 	quarter INT,
 	year INT,
-	CONSTRAINT pk_dim_date PRIMARY KEY (date_key)
+	CONSTRAINT pk_dim_date PRIMARY KEY NONCLUSTERED (date_key)
 )
-
+CREATE CLUSTERED COLUMNSTORE INDEX CLUSTERED_COLUMNSTORE_dim_date
+ON dim_date
 insert into dim_date values ('1900-1-1',-1,'unknown', -1,-1,-1,'unknown',-1,-1,-1)

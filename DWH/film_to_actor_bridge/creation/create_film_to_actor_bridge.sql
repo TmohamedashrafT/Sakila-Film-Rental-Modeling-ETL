@@ -13,10 +13,12 @@ CREATE TABLE film_to_actor_bridge
 	film_key INT NOT NULL,
 	actor_key INT NOT NULL,
 	last_update DATETIME
-	CONSTRAINT pk_film_to_actor_bridge PRIMARY KEY (film_to_actor_bridge_key),
+	CONSTRAINT pk_film_to_actor_bridge PRIMARY KEY NONCLUSTERED (film_to_actor_bridge_key),
 	CONSTRAINT fk_film_to_actor_bridge_dim_actor FOREIGN KEY (actor_key) REFERENCES
      dim_actor(actor_key),
 	CONSTRAINT fk_film_to_actor_bridge_dim_film FOREIGN KEY (film_key) REFERENCES
      dim_film(film_key)
 )
+CREATE CLUSTERED COLUMNSTORE INDEX CLUSTERED_COLUMNSTORE_film_to_actor_bridge
+ON film_to_actor_bridge
 

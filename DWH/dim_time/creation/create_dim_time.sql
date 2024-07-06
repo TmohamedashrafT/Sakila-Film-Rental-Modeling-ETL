@@ -35,6 +35,7 @@ CREATE TABLE dim_time
 	full_time TIME,-- business key
 	hour INT,
 	minute INT,
-	CONSTRAINT pk_time_key PRIMARY KEY (time_key)
+	CONSTRAINT pk_time_key PRIMARY KEY NONCLUSTERED (time_key)
 )
-
+CREATE CLUSTERED COLUMNSTORE INDEX CLUSTERED_COLUMNSTORE_dim_time
+ON dim_time
